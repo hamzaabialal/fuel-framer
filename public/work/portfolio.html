@@ -10,7 +10,31 @@
     
     <script>try{if(localStorage.get("__framer_force_showing_editorbar_since")){const n=document.createElement("link");n.rel = "modulepreload";n.href="https://framer.com/edit/init.mjs";document.head.appendChild(n)}}catch(e){}</script>
     <!-- Start of headStart -->
-    
+    <style>
+      a[href*="framer.com/?via"], a[href*="framer.com?via"],
+      [data-framer-name="Made in Framer"],
+      .framer-badge-container, #__framer-badge-container { display: none !important; visibility: hidden !important; }
+    </style>
+    <script>
+      (function(){
+        function hide(){
+          var as = document.querySelectorAll('a');
+          for (var i=0; i<as.length; i++){
+            var a = as[i];
+            var h = a.getAttribute('href') || '';
+            var t = (a.textContent || '').trim();
+            if (h.indexOf('framer.com') > -1 && (h.indexOf('via=') > -1 || t === 'Made in Framer')){
+              a.style.display = 'none';
+              if (a.parentElement) a.parentElement.style.display = 'none';
+            }
+          }
+        }
+        hide();
+        document.addEventListener('DOMContentLoaded', hide);
+        window.addEventListener('load', hide);
+        try { new MutationObserver(hide).observe(document.documentElement, {childList:true, subtree:true}); } catch(e){}
+      })();
+    </script>
     <!-- End of headStart -->
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="Framer 3256e0c">
