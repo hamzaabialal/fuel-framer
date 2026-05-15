@@ -2,23 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/about.html',
-        permanent: false,
-      },
-      {
-        source: '/index.html',
-        destination: '/about.html',
-        permanent: false,
-      },
-    ];
-  },
-
   async rewrites() {
     return [
+      { source: '/', destination: '/about.html' },
+      { source: '/index.html', destination: '/about.html' },
       { source: '/about', destination: '/about.html' },
       { source: '/contact', destination: '/contact.html' },
       { source: '/work/portfolio', destination: '/work/portfolio.html' },
